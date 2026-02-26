@@ -9,7 +9,6 @@ type SavedCompany = {
   sector: string;
 };
 
-// This MUST match the key used in your handleAddToList function on the profile page
 const STORAGE_KEY = "myList";
 
 export default function ListsPage() {
@@ -28,7 +27,7 @@ export default function ListsPage() {
 
         const parsed = JSON.parse(raw);
         if (Array.isArray(parsed)) {
-          // Normalize data to ensure we have the properties needed for the table
+  
           const normalized: SavedCompany[] = parsed.map((c: any) => ({
             id: c.id ?? c.name,
             name: c.name || "Unknown Company",
@@ -43,7 +42,6 @@ export default function ListsPage() {
 
     loadList();
     
-    // Listen for storage changes in case the user saves a company in another tab
     window.addEventListener('storage', loadList);
     return () => window.removeEventListener('storage', loadList);
   }, []);
@@ -77,7 +75,7 @@ export default function ListsPage() {
 
   return (
     <div className="max-w-6xl mx-auto space-y-8 animate-in fade-in duration-700">
-      {/* HEADER SECTION */}
+   
       <div className="flex justify-between items-end">
         <div>
           <h1 className="text-4xl font-black text-white italic tracking-tighter">My Curated Lists</h1>
@@ -96,7 +94,7 @@ export default function ListsPage() {
         </button>
       </div>
 
-      {/* LIST TABLE */}
+ 
       <div className="bg-slate-900/30 rounded-3xl border border-slate-800/60 backdrop-blur-md overflow-hidden shadow-2xl">
         {companies.length === 0 ? (
           <div className="p-24 text-center">

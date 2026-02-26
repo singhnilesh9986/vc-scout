@@ -5,7 +5,6 @@ import Link from "next/link";
 export default function SavedSearchesPage() {
   const [searches, setSearches] = useState<string[]>([]);
 
-  // Load the searches you starred on the Discover page
   useEffect(() => {
     const saved = localStorage.getItem("savedSearches");
     if (saved) {

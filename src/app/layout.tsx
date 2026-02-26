@@ -1,12 +1,12 @@
 import "./globals.css";
-import Link from "next/link"; // THIS WAS MISSING
+import Link from "next/link";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className="flex h-screen bg-[#020617] text-slate-300 antialiased">
         
-        {/* SIDEBAR: Premium Dark Glassmorphism */}
+        
         <aside className="w-64 bg-[#020617] border-r border-slate-800/60 flex flex-col h-screen sticky top-0 shadow-2xl">
           <div className="p-8 border-b border-slate-800/40">
             <h1 className="text-2xl font-black text-white tracking-tighter flex items-center gap-2">

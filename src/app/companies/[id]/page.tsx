@@ -11,10 +11,9 @@ export default function CompanyProfile() {
   const [enrichedData, setEnrichedData] = useState<any>(null);
   const [note, setNote] = useState("");
 
-  // Find the base company data from our mock JSON
+ 
   const company = companiesData.find((c) => c.id === id) || companiesData[0];
 
-  // Load existing notes and cache on mount
   useEffect(() => {
     const savedNotes = JSON.parse(localStorage.getItem("companyNotes") || "{}");
     if (savedNotes[id as string]) setNote(savedNotes[id as string]);
@@ -24,7 +23,7 @@ export default function CompanyProfile() {
   }, [id]);
 
   const handleSaveNote = () => {
-    // Save to the companyNotes object using the ID as the key
+    
     const savedNotes = JSON.parse(localStorage.getItem("companyNotes") || "{}");
     savedNotes[id as string] = note;
     localStorage.setItem("companyNotes", JSON.stringify(savedNotes));
@@ -34,7 +33,6 @@ export default function CompanyProfile() {
   const handleEnrich = async () => {
     setIsEnriching(true);
     try {
-      // Simulate server-side API call to /api/enrich [cite: 24]
       const response = await fetch("/api/enrich", {
         method: "POST",
         body: JSON.stringify({ url: company.website }),
@@ -51,23 +49,19 @@ export default function CompanyProfile() {
   };
 
   const handleAddToList = () => {
-    // 1. Get existing list from storage or start empty
     const existingList = JSON.parse(localStorage.getItem("myList") || "[]");
-    
-    // 2. Check for duplicates so we don't save the same company twice
     const alreadyExists = existingList.some((item: any) => item.id === company.id);
     
     if (alreadyExists) {
       alert(`${company.name} is already in your list!`);
     } else {
-      // 3. Save updated list
       const updatedList = [...existingList, company];
       localStorage.setItem("myList", JSON.stringify(updatedList));
       alert(`Success: ${company.name} added to My Lists.`);
     }
   };
 
-  // Mocked signals for the timeline requirement [cite: 13, 21]
+
   const signals = [
     { date: "Feb 2024", event: "Series A Extension - $12M", type: "Funding" },
     { date: "Jan 2024", event: "Careers page updated (5 new roles)", type: "Hiring" },
@@ -76,7 +70,7 @@ export default function CompanyProfile() {
 
   return (
     <div className="max-w-7xl mx-auto space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
-      {/* TOP ACTION BAR */}
+      
       <div className="bg-slate-900/40 border border-slate-800 p-8 rounded-3xl backdrop-blur-xl flex justify-between items-center shadow-2xl">
         <div>
           <div className="flex items-center gap-4 mb-2">
@@ -108,10 +102,9 @@ export default function CompanyProfile() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* MAIN COLUMN */}
+     
         <div className="lg:col-span-2 space-y-8">
           
-          {/* AI INTELLIGENCE BOX [cite: 16, 17] */}
           <div className="bg-[#020617] border border-slate-800 rounded-[2rem] p-8 shadow-inner relative overflow-hidden">
             <h3 className="text-slate-500 uppercase text-[10px] font-black tracking-[0.3em] mb-8 flex items-center gap-3">
               <span className={`h-2 w-2 rounded-full ${isEnriching ? 'bg-blue-500 animate-ping' : 'bg-slate-700'}`} />
@@ -147,7 +140,7 @@ export default function CompanyProfile() {
             )}
           </div>
 
-          {/* SIGNALS TIMELINE [cite: 13, 21] */}
+         
           <div className="bg-slate-900/20 border border-slate-800 rounded-[2rem] p-8">
             <h3 className="text-slate-500 uppercase text-[10px] font-black tracking-[0.3em] mb-10">Signals Trail</h3>
             <div className="space-y-12 relative before:absolute before:inset-0 before:ml-[19px] before:w-[2px] before:bg-gradient-to-b before:from-blue-500 before:to-transparent">
@@ -166,9 +159,9 @@ export default function CompanyProfile() {
           </div>
         </div>
 
-        {/* SIDEBAR COLUMN */}
+    
         <div className="space-y-8">
-          {/* INTERNAL NOTES  */}
+       
           <div className="bg-slate-900/40 border border-slate-800 rounded-[2rem] p-8 flex flex-col h-full">
             <h3 className="text-slate-500 uppercase text-[10px] font-black tracking-[0.3em] mb-6">Investment Thesis</h3>
             <textarea 

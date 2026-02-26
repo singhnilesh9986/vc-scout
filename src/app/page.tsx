@@ -1,4 +1,4 @@
-"use client"; // This tells React this page is interactive
+"use client"; 
 
 import { useState } from "react";
 import companiesData from "@/data/companies.json";
@@ -7,7 +7,6 @@ export default function CompaniesPage() {
   const [search, setSearch] = useState("");
   const [filterSector, setFilterSector] = useState("All");
 
-  // Logic to filter the list based on what you type or select
   const filteredCompanies = companiesData.filter((c) => {
     const matchesSearch = c.name.toLowerCase().includes(search.toLowerCase());
     const matchesSector = filterSector === "All" || c.sector === filterSector;
@@ -20,7 +19,7 @@ export default function CompaniesPage() {
         <h2 className="text-2xl font-bold">Discover</h2>
         
         <div className="flex gap-4">
-          {/* SEARCH INPUT */}
+          
           <input 
             type="text" 
             placeholder="Search companies..." 
@@ -28,7 +27,7 @@ export default function CompaniesPage() {
             onChange={(e) => setSearch(e.target.value)}
           />
           
-          {/* SECTOR FILTER */}
+      
           <select 
             className="border p-2 rounded-lg"
             onChange={(e) => setFilterSector(e.target.value)}

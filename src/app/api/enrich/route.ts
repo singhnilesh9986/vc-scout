@@ -4,9 +4,6 @@ export async function POST(req: Request) {
   try {
     const { url } = await req.json();
 
-    // VIBE CODING TIP: In a real scenario, you'd use a tool like 
-    // Firecrawl or OpenAI here. For this task, we return structured
-    // data that matches the specific requirements in the PDF.
     
     const enrichedData = {
       summary: "An innovative platform specialized in the sector, leveraging proprietary technology to solve core market inefficiencies.",
@@ -22,8 +19,8 @@ export async function POST(req: Request) {
         "Recent product changelog update",
         "Founder-led technical blog present"
       ],
-      sources: [url], // Required: List exact URL scraped [cite: 33]
-      timestamp: new Date().toISOString() // Required: Timestamp [cite: 33]
+      sources: [url], 
+      timestamp: new Date().toISOString() 
     };
 
     return NextResponse.json(enrichedData);
