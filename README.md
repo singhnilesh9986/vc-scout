@@ -19,8 +19,8 @@ A premium, high-density discovery platform for Venture Capitalists to source, an
 
 1. **Clone the repository**
    ```bash
-   git clone <your-github-repo-url>
-   cd vc-scout
+   git clone https://github.com/singhnilesh9986/vc-scout
+   cd vc-scout-app
 
 2. **Install dependencies**
     npm install
