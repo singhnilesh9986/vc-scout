@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# VC Scout: Intelligence & Sourcing Interface
 
-## Getting Started
+A premium, high-density discovery platform for Venture Capitalists to source, analyze, and track high-growth companies. Built as part of the VC Sourcing Sourcing Assignment.
 
-First, run the development server:
+## 🚀 Key Features
+- **Market Intelligence Discovery**: Advanced search and filtering of seed-stage companies.
+- **Live AI Enrichment**: Real-time extraction of company summaries, key signals, and technical data using server-side scraping.
+- **Signals Trail**: A visual timeline of company milestones (funding, hiring, product launches).
+- **Persistent Pipeline**: "Save to List" and "Internal Notes" features powered by LocalStorage for session-wide persistence.
+- **Power-User Export**: One-click CSV export of curated company lists.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🛠️ Tech Stack
+- **Framework**: Next.js 14 (App Router)
+- **Styling**: Tailwind CSS (Custom Obsidian Theme)
+- **State Management**: React Hooks + LocalStorage Persistence
+- **Deployment**: Vercel
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ⚙️ Setup & Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Clone the repository**
+   ```bash
+   git clone <your-github-repo-url>
+   cd vc-scout
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Install dependencies**
+    npm install
 
-## Learn More
+3. **Run Development Server**
+    npm run dev
+    Open http://localhost:3000 to view the app.
 
-To learn more about Next.js, take a look at the following resources:
+**Architecture Decisions**
+Persistence Strategy: Used localStorage for Lists and Notes to ensure a fast, database-less MVP that survives browser refreshes.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+UX/UI: Implemented a "Dark Mode First" obsidian aesthetic to mimic high-end financial terminals (Bloomberg/Harmonic).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Caching: AI Enrichment results are cached per company ID in storage to prevent redundant API calls.

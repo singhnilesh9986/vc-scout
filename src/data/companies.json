@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1",
+    "name": "EcoAI",
+    "website": "https://ecoai.com",
+    "sector": "ClimateTech",
+    "stage": "Seed",
+    "description": "Using AI to track carbon credits."
+  },
+  {
+    "id": "2",
+    "name": "FinFlow",
+    "website": "https://finflow.io",
+    "sector": "Fintech",
+    "stage": "Series A",
+    "description": "Automated payroll for startups."
+  }
+]
