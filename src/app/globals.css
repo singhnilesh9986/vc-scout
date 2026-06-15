@@ -4,31 +4,172 @@
 @tailwind utilities;
 
 :root {
-  --background: #020617;
-  --foreground: #f8fafc;
+  --background: #050709;
+  --foreground: #f0f0f5;
+  --card-bg: #0D0E12;
+  --card-border: rgba(88, 28, 135, 0.4); /* purple-900/40 */
+  --accent-purple: #a855f7;
+  --accent-glow: rgba(139, 92, 246, 0.12);
 }
 
 body {
-  background-color: #020617 !important;
-  color: #f8fafc !important;
+  background-color: #050709 !important;
+  color: #f0f0f5 !important;
   margin: 0;
+  overflow-x: hidden;
 }
 
-.bg-white, 
-[class*="bg-white"],
-table, 
-thead, 
-tr {
-  background-color: #020617 !important;
-  color: #f8fafc !important;
-  border-color: rgba(30, 41, 59, 0.5) !important;
+/* Blinking terminal caret cursor */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
-tr:hover, 
-[class*="hover:bg-slate"] {
-  background-color: rgba(30, 41, 59, 0.4) !important;
+.terminal-caret::after {
+  content: "▋";
+  color: #a855f7; /* Purple caret */
+  font-weight: bold;
+  animation: cursor-blink 1s step-start infinite;
+  display: inline-block;
+  margin-left: 2px;
 }
 
-h2, h3, p, span, div {
-  color: inherit;
+/* Staggered card fade-in animation */
+@keyframes slide-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-fade-in {
+  animation: slide-fade-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+/* Welcome widget fade/scale entrance */
+@keyframes welcome-entrance {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(20px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+.animate-welcome-entrance {
+  animation: welcome-entrance 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+/* Subtle floating idle animation for welcome logo */
+@keyframes float-idle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-float-idle {
+  animation: float-idle 4s ease-in-out infinite;
+}
+
+/* Glowing ring pulse */
+@keyframes glow-ring-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.08), 0 0 60px rgba(139, 92, 246, 0.04); }
+  50% { box-shadow: 0 0 30px rgba(139, 92, 246, 0.15), 0 0 80px rgba(139, 92, 246, 0.08); }
+}
+
+.animate-glow-ring {
+  animation: glow-ring-pulse 3s ease-in-out infinite;
+}
+
+/* Sidebar drawer slide */
+@keyframes drawer-slide-in {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes drawer-slide-out {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+.drawer-enter {
+  animation: drawer-slide-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.drawer-exit {
+  animation: drawer-slide-out 0.25s cubic-bezier(0.55, 0, 1, 0.45) forwards;
+}
+
+/* Overlay backdrop */
+@keyframes backdrop-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes backdrop-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.backdrop-enter {
+  animation: backdrop-fade-in 0.3s ease forwards;
+}
+
+.backdrop-exit {
+  animation: backdrop-fade-out 0.2s ease forwards;
+}
+
+/* Bar chart grow animation */
+@keyframes bar-grow {
+  from {
+    height: 0%;
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-bar-grow {
+  animation: bar-grow 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Subtle scanline effect for terminal aesthetic */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* Typing effect for welcome subtitle */
+@keyframes typing-reveal {
+  from { max-width: 0; }
+  to { max-width: 100%; }
+}
+
+.animate-typing {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing-reveal 2s steps(60) 0.5s forwards;
+  max-width: 0;
 }

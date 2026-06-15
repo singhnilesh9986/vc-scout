@@ -87,50 +87,50 @@ export default function ListsPage() {
           disabled={companies.length === 0}
           className={`flex items-center gap-2 px-6 py-3 rounded-xl font-black text-xs uppercase tracking-widest transition-all
             ${companies.length > 0 
-              ? "bg-white text-black hover:bg-blue-500 hover:text-white shadow-lg" 
-              : "bg-slate-800 text-slate-600 cursor-not-allowed"}`}
+              ? "bg-purple-600 text-white hover:bg-purple-500 shadow-lg shadow-purple-500/20" 
+              : "bg-[#0D0E12] text-slate-600 border border-purple-900/30 cursor-not-allowed"}`}
         >
           📥 Export CSV
         </button>
       </div>
 
  
-      <div className="bg-slate-900/30 rounded-3xl border border-slate-800/60 backdrop-blur-md overflow-hidden shadow-2xl">
+      <div className="bg-gradient-to-br from-[#0D0E12] to-[#0A0A10] rounded-3xl border border-purple-900/40 overflow-hidden shadow-2xl hover:border-purple-900/60 transition-all duration-500">
         {companies.length === 0 ? (
           <div className="p-24 text-center">
             <div className="text-4xl mb-4">📂</div>
             <p className="text-slate-500 font-bold uppercase tracking-[0.2em] text-xs">No saved companies found</p>
-            <Link href="/companies" className="text-blue-500 text-sm mt-4 inline-block hover:underline font-bold">
+            <Link href="/" className="text-purple-400 text-sm mt-4 inline-block hover:underline font-bold">
               Return to Discovery →
             </Link>
           </div>
         ) : (
           <table className="w-full text-left">
             <thead>
-              <tr className="bg-slate-800/30 text-slate-500 text-[11px] uppercase tracking-[0.2em] font-bold border-b border-slate-800/60">
+              <tr className="bg-purple-900/10 text-slate-500 text-[11px] uppercase tracking-[0.2em] font-bold border-b border-purple-900/30">
                 <th className="p-6">Entity</th>
                 <th className="p-6">Sector</th>
                 <th className="p-6 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/40">
+            <tbody className="divide-y divide-purple-900/20">
               {companies.map((company) => (
-                <tr key={company.id} className="hover:bg-blue-500/5 transition-all group">
+                <tr key={company.id} className="hover:bg-purple-500/5 transition-all group">
                   <td className="p-6">
-                    <Link href={`/companies/${company.id}`} className="font-bold text-white text-lg group-hover:text-blue-400 transition-colors">
+                    <Link href={`/companies/${company.id}`} className="font-bold text-white text-lg group-hover:text-purple-400 transition-colors">
                       {company.name}
                     </Link>
                     <div className="text-[10px] text-slate-600 font-mono mt-1">ID: {company.id}</div>
                   </td>
                   <td className="p-6">
-                    <span className="text-[10px] font-black px-3 py-1.5 rounded-lg bg-slate-800/80 text-slate-400 border border-slate-700/50 uppercase tracking-widest">
+                    <span className="text-[10px] font-black px-3 py-1.5 rounded-lg bg-[#0D0E12] text-slate-400 border border-purple-900/30 uppercase tracking-widest">
                       {company.sector}
                     </span>
                   </td>
                   <td className="p-6 text-right">
                     <button
                       onClick={() => handleRemove(company.id)}
-                      className="text-[10px] font-black text-slate-500 hover:text-red-500 uppercase tracking-widest transition-colors p-2"
+                      className="text-[10px] font-black text-slate-500 hover:text-red-400 uppercase tracking-widest transition-colors p-2"
                     >
                       [ Remove ]
                     </button>
